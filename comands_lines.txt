@@ -60,3 +60,4 @@ conda activate python-quality-code-env
     conda search pre-commit -c conda-forge
     # INSTALL
     conda install pre-commit=2.4.0 -c conda-forge -y
+    #
