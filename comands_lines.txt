@@ -1,0 +1,62 @@
+################################################################################
+############################ MAKE HIGH QUALITY CODE ############################
+################################################################################
+
+# CREATE ENV WITH PYTHON VERSION
+conda create -n python-quality-code-env python=3.8.3 -y
+# ACTIVATE ENV
+conda activate python-quality-code-env
+
+# SEARCH PACKAGES
+    # SEARCH FLAKE8 -> PEP-8
+    conda search flake8
+    # INSTALL PACKAGE
+    conda install flake8=3.8.2 -y
+    # EXECUTE FLAKE8
+    flake8 .
+
+    # SEARCH PYDOCSTYLE -> PEP-257
+    conda search pydocstyle
+    # INSTALL PACKAGE
+    conda install pydocstyle=5.0.2 -y
+    # EXECUTE PYDOCSTYLE
+    pydocstyle .
+
+    # SEARCH MYPY
+    conda search mypy
+    # INSTALL PACKAGE
+    conda install mypy=0.770 -y
+    # EXECUTE MYPY
+    mypy .
+
+    # SEARCH BLACK
+    conda search black
+    # INSTALL PACKAGE
+    conda install black=19.10b -y
+    # EXECUTE BLACK
+    black .
+
+
+# CREATE SCRIPTS FOR AUTOMATION
+    # SCRIPT FOR DELETE AND CREATE THE ENV
+    scripts/create_env.sh
+    # ASSIGNING EXECUTION PERMITS
+    chmod +x scripts/create_env.sh
+
+    # SCRIPT FOR EXECUTE LINTERS
+    scripts/linters.sh
+    # ASSIGNING EXECUTION PERMITS
+    chmod +x scripts/linters.sh
+
+    # SCRIPT FOR CREATE GIT HOOK
+    .git/hooks/scripts/pre-commit.sh
+    # ASSIGNING EXECUTION PERMITS
+    chmod +x scripts/pre-commit.sh
+    # FROM THE PATH OF THE PROJECT EXECUTE A COMMIT
+    git commit -m "init app"
+    
+# INTEGRATE PRE-COMMIT LIBRARY
+    # SEARCH
+    conda search pre-commit -c conda-forge
+    # INSTALL
+    conda install pre-commit=2.4.0 -c conda-forge -y
