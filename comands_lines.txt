@@ -60,4 +60,10 @@ conda activate python-quality-code-env
     conda search pre-commit -c conda-forge
     # INSTALL
     conda install pre-commit=2.4.0 -c conda-forge -y
-    #
+    # CREATE .pre-commit-config.yaml AND CHANGE IT
+    pre-commit sample-config > .pre-commit-config.yaml
+    # INSTALL HOOK IN .git/hooks
+    pre-commit install
+    # MAKE A COMMIT
+    git commit -m "Agregando pre-commit lib"
+    
